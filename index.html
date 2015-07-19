@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="tlanyan(http://tlanyan.me)">
+    <script>
+    window.onerror = function (message, url, line) {
+        alert(message);
+    }
+    </script>
+
+    <title>微信分享跳转页面</title>
+</head>
+
+<body>
+    <h1>微信分享跳转示例</h1>
+
+    <p>分享到朋友圈后，将跳转到指定的页面</p>
+
+    <p>作者： tlanyan(http://tlanyan.me) </p>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="script/tlanyan.js"></script>
+
+    <script>
+    "use strict";
+
+    // 调用的微信api列表
+    var list = [
+        'onMenuShareAppMessage',    // 分享至微信好友
+        'onMenuShareTimeline',      // 分享到朋友圈
+        'onMenuShareQQ',            // 分享到qq
+    ];
+
+    function callback () {
+        var link = 'http://tlanyan.me';
+        var options = {
+            title: "微信分享跳转",
+            desc: "分享本页面到朋友圈，将自动跳转到tlanyan的博客",
+            imgUrl: "http://www.tlanyan.me/wp-content/uploads/2015/04/cute_bear-150x150.jpg", // 分享显示的图片
+            link: window.location.href, // 点击分享进入的网址
+            success: function() {
+                window.open(link); // 分享成功后的动作，这里我们设置为打开红包链接
+            }
+        };
+        // 指定分享到朋友圈才有效
+        wx.onMenuShareTimeline(options);
+        //wx.onMenuShareAppMessage(options);
+        //wx.onMenuShareQQ(options);
+    }
+
+    // 监听分享事件
+    tlanyan.weixinJsApi(list, callback);
+    </script>
+</body>
+</html>

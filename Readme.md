@@ -1,6 +1,6 @@
 # 微信分享示例
 
-作者： tlanyan<tlanyan@hotmail.com>  
+作者： tlanyan （tlanyan at hotmail.com）  
 联系： http://tlanyan.me
 
 ## 使用方法：
